@@ -8,8 +8,11 @@ function SidebarView(props) {
                 <tbody>
                     {[...props.dishes].sort(compareDishes).map(dish => 
                     <tr id = {dish.id}>
-                        <td><button>x</button></td>
-                        <td>{dish.title}</td>
+                        <td><button onClick={() => props.removeDish(dish.id)}>x</button></td>
+                        <td><a href="" onClick={e=> {e.preventDefault(); 
+                            props.dishChoice(dish.id);} } 
+                            >{dish.title}</a>
+                        </td>
                         <td>{dishType(dish)}</td>    
                         <td>{(dish.pricePerServing*props.guests).toFixed(2)}</td>
                     </tr>)}

@@ -12,3 +12,21 @@
 .totalPrice{
     
 }
+
+.detailsView {
+  padding: 50px;
+}
+
+.imageView{
+  display:inline-block;
+  border-radius: 25px;
+  border: 5px solid #887d41;
+  padding: 0px;
+  width: 500px;
+  height: 400px;
+}
+
+.titleView{
+  font-family: "Monotype Corsiva", Times, sans-serif;
+  margin-left: 100px;
+}
