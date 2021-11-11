@@ -20,6 +20,6 @@ const DishSource = {   // JS object creation literal
     }
     ,
     getDishDetails(id) {
-        return DishSource.apiCall('/recipes/' + id + '/information');
+        return DishSource.apiCall('/recipes/' + id + '/information')
     }
 };
