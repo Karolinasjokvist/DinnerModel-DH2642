@@ -13,7 +13,7 @@ function SidebarView(props) {
                             props.dishChoice(dish.id);} } 
                             >{dish.title}</a>
                         </td>
-                        <td>{dishType(dish)}</td>    
+                        <td>{dishType(dish)}</td>
                         <td>{(dish.pricePerServing*props.guests).toFixed(2)}</td>
                     </tr>)}
 
@@ -24,7 +24,7 @@ function SidebarView(props) {
                         <td class="totalPrice">{(props.dishes.reduce((accumulator, value) => 
                         accumulator + value.pricePerServing * props.guests, 0)).toFixed(2)}</td>
                     </tr>
-                    
+
                 </tbody>
             </table>
         </div>
@@ -34,9 +34,9 @@ function SidebarView(props) {
 const types=["starter", "main course", "dessert"];
 function dishType(dish){
     if(dish.dishTypes){
-    	const tp= dish.dishTypes.filter(value => types.includes(value));
-    	if(tp.length)
-	    return tp[0];
+        const tp= dish.dishTypes.filter(value => types.includes(value));
+        if(tp.length)
+        return tp[0];
     }
     return "";
 }
@@ -48,6 +48,3 @@ function compareDishes(a,b){
     if(ai>bi) return 1;
     if(ai===bi) return 0;
 }
-
-
-

@@ -29,5 +29,3 @@ function SearchResultsView(props) {
         </div>
     )
 }
-
-
