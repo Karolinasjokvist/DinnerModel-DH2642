@@ -44,6 +44,11 @@ DishSource.getDishDetails(547775).then(details=>
           ReactDOM.render(<DetailsView dish={details} people={3} isDishInMenu={false}  
                         dishAdded={()=>console.log("User wants to add this dish! ", details)} />
                        , document.getElementById("app")));
+
+                       DishSource.getDishDetails(547775).then(details=>
+                       ReactDOM.render(<DetailsView dish={details} people={3}  isDishInMenu={false}  
+                                                 dishAdded={()=>console.log("User wants to add this dish! ", details)} />
+                                    , document.getElementById("app")));
 </script>
 
 </html>

@@ -24,9 +24,9 @@ justify-content: left;
 }
 
 .imageView{
+padding: 20px;
 border-radius: 0px;
-border: 1px solid #d3eaff;
-padding: 0px;
+border: 20px solid #b4dafd;
 width: 500px;
 height: 400px;
 }
@@ -44,7 +44,7 @@ font-size: 20;
 }
 
 .ingredientView{
-padding-top: 100;
+padding-top: 50px;
 padding-left: 20px;
 font-family: "Courier New", Times, sans-serif;
 }
@@ -53,6 +53,8 @@ font-family: "Courier New", Times, sans-serif;
 font-size: 20;
 width: 100%;
 height: 20%
+color: black;
+background-color: #b4dafd;
 }
 
 .dishTypeView{
@@ -63,8 +65,14 @@ padding-left: 100px;
 padding-bottom: 5px;
 }
 
-.tr{
-color: white;
-background-color: #d3eaff;
-border: #d3eaff;
+.instructionsView{
+  font-family: "Courier New", Times, sans-serif;
+}
+
+.buttonView{
+  background-color: #b4dafd;
+  border: 0px;
+  padding: 20px;
+  margin-left: 55;
+  margin-top: 20;
 }
