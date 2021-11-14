@@ -10,6 +10,7 @@
     <script src="js/views/sideBarView.js" type="text/jsx"></script>
     <script src="js/views/searchView.js" type="text/jsx"></script>
     <script src="js/views/detailsView.js" type="text/jsx"></script>
+    <script src="js/DinnerModel.js" type="text/jsx"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -45,10 +46,16 @@ DishSource.getDishDetails(547775).then(details=>
                         dishAdded={()=>console.log("User wants to add this dish! ", details)} />
                        , document.getElementById("app")));
 
-                       DishSource.getDishDetails(547775).then(details=>
-                       ReactDOM.render(<DetailsView dish={details} people={3}  isDishInMenu={false}  
-                                                 dishAdded={()=>console.log("User wants to add this dish! ", details)} />
-                                    , document.getElementById("app")));
+       
+        Promise.all(
+            [DishSource.getDishDetails(523145), 
+            DishSource.getDishDetails(787321),
+            DishSource.getDishDetails(452179)]
+        ).then(values=> ReactDOM.render(
+            <SummaryView persons={2} 
+                        ingredients={getIngredients(values)} />
+                            , document.getElementById("app")))
+                                                                      
 </script>
 
 </html>
