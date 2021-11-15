@@ -52,7 +52,7 @@
 .infoView{
   font-size: 20;
   width: 100%;
-  height: 20%
+  height: 20%;
   color: black;
   background-color: #b4dafd;
 }
@@ -88,9 +88,48 @@
 
 .tableView{
   font-family: "Courier New", Times, sans-serif;
-  width: 50%;
+  width: 100%;
+  height: 100%;
 }
 
 .tableView tr:nth-child(even){
   background: rgb(219, 219, 219)
+}
+
+@media only screen and (min-width: 750px) {
+  .debug{
+    border-style: solid;
+  }
+
+  .flexParent{ 
+    display: flex;
+    flex-direction: row;
+    height: 100%; 
+  }
+
+  .sidebar{
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  .mainContent{
+    width: 100%;
+    overflow-y: scroll;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  .debug{
+    border-style: solid;
+  }
+
+  .sidebar{
+    width: 100%;
+  }
+
+  .mainContent{
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+  }
 }

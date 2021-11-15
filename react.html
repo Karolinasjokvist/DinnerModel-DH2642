@@ -5,6 +5,7 @@
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="js/apiConfig.js"></script>
+    <script src="js/app.js" type="text/jsx"></script>
     <script src="js/dishSource.js"></script>
     <script src="js/views/SummaryView.js" type="text/jsx"></script>
     <script src="js/views/sideBarView.js" type="text/jsx"></script>
@@ -52,7 +53,8 @@ DishSource.getDishDetails(547775).then(details=>
             DishSource.getDishDetails(787321),
             DishSource.getDishDetails(452179)]
         ).then(values=> values.map(d=>myModel.addToMenu(d)))
-        .then(()=> { myModel.removeFromMenu({id:787321}); console.log(myModel); })
+        .then(()=> { myModel.removeFromMenu({id:787321}); console.log(myModel); });
+        ReactDOM.render(<ReactTopLevelModel />, document.getElementById("app"));
                                                                       
 </script>
 

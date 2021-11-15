@@ -15,10 +15,11 @@ class DinnerModel {
 
     addToMenu(dish) {
         this.dishes = [... this.dishes, dish];
+        this.currentDish = dish;
     }
 
     removeFromMenu(dishData) {
-        this.dishes = this.dishes.filter(dish => dish.id != dishData.id);
+        this.dishes = this.dishes.filter(dish => dish.id !== dishData);
     }
 
     setCurrentDish(id) {
