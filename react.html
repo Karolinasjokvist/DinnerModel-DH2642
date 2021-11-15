@@ -12,6 +12,7 @@
     <script src="js/views/searchView.js" type="text/jsx"></script>
     <script src="js/views/detailsView.js" type="text/jsx"></script>
     <script src="js/DinnerModel.js" type="text/jsx"></script>
+    <script src="js/views/promiseNoData.js" type="text/jsx"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -40,7 +41,7 @@
                  removeDish={id=> console.log("user wants to remove dish with ID ", id)} 
                  dishChoice={id=> console.log("user wants details of dish with ID ", id)} />
 , document.getElementById("app")))
-*/
+
 
 DishSource.getDishDetails(547775).then(details=>
           ReactDOM.render(<DetailsView dish={details} people={3} isDishInMenu={false}  
@@ -55,6 +56,11 @@ DishSource.getDishDetails(547775).then(details=>
         ).then(values=> values.map(d=>myModel.addToMenu(d)))
         .then(()=> { myModel.removeFromMenu({id:787321}); console.log(myModel); });
         ReactDOM.render(<ReactTopLevelModel />, document.getElementById("app"));
+
+        ReactDOM.render(promiseNoData("promise", "some data", null), document.getElementById("app"));
+*/
+
+ReactDOM.render(<div><SearchTest /><DetailsTest/></div>, document.getElementById("app"))
                                                                       
 </script>
 

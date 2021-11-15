@@ -12,6 +12,7 @@
     <script src="js/DinnerModel.js" type="text/jsx"></script>
     <script src="vuejs/sidebarPresenter.js" type="text/jsx"></script>
     <script src="vuejs/summaryPresenter.js" type="text/jsx"></script>
+    <script src="js/views/promiseNoData.js" type="text/jsx"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -46,6 +47,8 @@
         values.map(d=>myModel.addToMenu(d));
         Vue.render(<TopLevelModel />, document.getElementById("app"));
         });
+
+    Vue.render(promiseNoData("promise", "some data", null), document.getElementById("app"));
 </script>
 
 </html>
