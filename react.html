@@ -46,15 +46,13 @@ DishSource.getDishDetails(547775).then(details=>
                         dishAdded={()=>console.log("User wants to add this dish! ", details)} />
                        , document.getElementById("app")));
 
-       
+        const myModel=new DinnerModel(5);
         Promise.all(
             [DishSource.getDishDetails(523145), 
             DishSource.getDishDetails(787321),
             DishSource.getDishDetails(452179)]
-        ).then(values=> ReactDOM.render(
-            <SummaryView persons={2} 
-                        ingredients={getIngredients(values)} />
-                            , document.getElementById("app")))
+        ).then(values=> values.map(d=>myModel.addToMenu(d)))
+        .then(()=> { myModel.removeFromMenu({id:787321}); console.log(myModel); })
                                                                       
 </script>
 

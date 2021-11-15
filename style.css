@@ -91,6 +91,6 @@
   width: 50%;
 }
 
-tr:nth-child(even){
-  background: #CCC
+.tableView tr:nth-child(even){
+  background: rgb(219, 219, 219)
 }

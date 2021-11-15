@@ -9,6 +9,7 @@
     <script src="js/views/sideBarView.js" type="text/jsx"></script>
     <script src="js/views/searchView.js" type="text/jsx"></script>
     <script src="js/app.js" type="text/jsx"></script>
+    <script src="js/DinnerModel.js" type="text/jsx"></script>
     <script src="vuejs/sidebarPresenter.js" type="text/jsx"></script>
     <script src="vuejs/summaryPresenter.js" type="text/jsx"></script>
     <link rel="stylesheet" href="style.css">
@@ -25,7 +26,26 @@
 </body>
 
 <script type="text/jsx">
-    Vue.render(<DishSource />,document.getElementById("app"));
+    const myModel = new DinnerModel(3);
+    const TopLevelModel = {
+        data() {
+            return  {
+                model: myModel
+            };
+        }, 
+        render(){ 
+            return <App model={this.model}/>;
+        }
+    }
+
+    Promise.all(
+        [DishSource.getDishDetails(523145), 
+        DishSource.getDishDetails(787321),
+        DishSource.getDishDetails(452179)]
+    ).then(function(values){ 
+        values.map(d=>myModel.addToMenu(d));
+        Vue.render(<TopLevelModel />, document.getElementById("app"));
+        });
 </script>
 
 </html>

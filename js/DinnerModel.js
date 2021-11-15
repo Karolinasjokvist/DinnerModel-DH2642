@@ -1,6 +1,8 @@
 class DinnerModel {
-    constructor(guests = 2) {
+    constructor(guests = 2, dishes=[], currentDish=null) {
         this.setNumberOfGuests(guests);
+        this.dishes = dishes;
+        this.currentDish = currentDish;
     }
 
     setNumberOfGuests(x) {
@@ -9,6 +11,18 @@ class DinnerModel {
         } else {
             this.numberOfGuests = x;
         }
+    }
+
+    addToMenu(dish) {
+        this.dishes = [... this.dishes, dish];
+    }
+
+    removeFromMenu(dishData) {
+        this.dishes = this.dishes.filter(dish => dish.id != dishData.id);
+    }
+
+    setCurrentDish(id) {
+        this.currentDish.id = id;
     }
 }
 
@@ -25,4 +39,3 @@ function getIngredients(dishArr) {
     }))
     return Object.values(result);
 }
-
