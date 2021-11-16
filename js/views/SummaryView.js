@@ -22,7 +22,7 @@ function SummaryView(props) {
                                     {i.aisle}
                                 </td>
                                 <td>
-                                    {(parseFloat(i.amount.toFixed(2)))*props.persons} {" "} {i.unit}
+                                    {roundOff(i.amount*props.persons)} {" "} {i.unit}
                                 </td>
                             </tr>
                         )}
@@ -35,7 +35,7 @@ function SummaryView(props) {
 }
 
 function roundOff(amount) {
-    if (typeof (amount) !== "number") {
+    if (amount % 1 != 0) {
         return amount.toFixed(2);
     }
     return amount;

@@ -41,7 +41,7 @@ function DetailsView(props) {
                         <tbody>
                             {[...props.dish.extendedIngredients].map(dish =>
                                 <tr>
-                                    <td>{dish.amount}{" "}{dish.unit}</td>
+                                    <td>{roundOff(dish.amount)}{" "}{dish.unit}</td>
                                     <td>{" "}</td>
                                     <td>{" "}</td>
                                     <td>{" "}</td>
@@ -78,6 +78,13 @@ function divide(string) {
     }
     string = a.join('');
     return string.split('/');
+}
+
+function roundOff(amount) {
+    if (amount % 1 != 0) {
+        return amount.toFixed(2);
+    }
+    return amount;
 }
 
 
