@@ -7,48 +7,50 @@ class DinnerModel {
     }
 
     setNumberOfGuests(x) {
-        if (x != this.numberOfGuests) {
-            this.notifyObservers();
+        if (x === this.numberOfGuests) {
+            return;
         }
-
+        
         if (x <= 0 || typeof (x) !== "number") {
             throw "error";
         } else {
             this.numberOfGuests = x;
+            this.notifyObservers();
         }
 
     }
 
     addedToMenu(dish) {
-        this.dishes.forEach(addedDish => {
-            if (addedDish === dish) {
-                return true;
-            }
-        });
-
+        if(this.dishes.some(d => d.id === dish)){
+            return true;
+        }
         return false;
     }
 
     addToMenu(dish) {
-        if (!this.addedToMenu(dish)) {
-            this.notifyObservers();
-        }
-        this.dishes = [... this.dishes, dish];
-        this.currentDish = dish;
+        if (this.addedToMenu(dish)){
+            return;
+        } 
+        this.dishes = [...this.dishes, dish];
+        this.notifyObservers();
     }
 
     removeFromMenu(dishData) {
         if(!this.addedToMenu(dishData)){
-            this.notifyObservers();
+            return;
         }
-        this.dishes = this.dishes.filter(dish => dish.id !== dishData);
+        console.log("hej")
+        this.dishes = this.dishes.filter((dish) => dish.id !== dishData);
+        this.notifyObservers();
     }
 
     setCurrentDish(id) {
-        if(this.currentDish.id != id){
-            this.notifyObservers();
+        if (this.currentDish === id) {
+            return;
         }
-        this.currentDish.id = id;
+        
+        this.currentDish = id;
+        this.notifyObservers();
     }
 
     addObserver(callback) {
@@ -61,7 +63,7 @@ class DinnerModel {
 
     notifyObservers() {
         this.observers.forEach(cb => {
-            try { cb() } catch { }
+            try { cb() } catch (e) { console.log(e) }
         });
     }
 }

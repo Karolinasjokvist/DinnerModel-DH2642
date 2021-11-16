@@ -1,5 +1,4 @@
 function promiseNoData(promise, data, error) {
-    console.log("2");
     if (promise === null || promise === undefined) {
         return ( <span>no data</span>)
     } else if (data == undefined) {
