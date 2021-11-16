@@ -23,44 +23,10 @@
 </body>
 
 <script type="text/jsx">
-    /*
-    image
-    ingredients
-    readyInMinutes
-    dishtypes
-    servings
+    
+    ReactDOM.render(<div><SearchTest /><DetailsTest/></div>, document.getElementById("app"))
+    const myModel=new DinnerModel();
 
-    Promise.all(
-     [DishSource.getDishDetails(523145), 
-     DishSource.getDishDetails(787321),
-     DishSource.getDishDetails(758118),
-     DishSource.getDishDetails(452179)]
-).then(values=> ReactDOM.render(
-    <SidebarView guests={5} 
-                 dishes={values}
-                 removeDish={id=> console.log("user wants to remove dish with ID ", id)} 
-                 dishChoice={id=> console.log("user wants details of dish with ID ", id)} />
-, document.getElementById("app")))
-
-
-DishSource.getDishDetails(547775).then(details=>
-          ReactDOM.render(<DetailsView dish={details} people={3} isDishInMenu={false}  
-                        dishAdded={()=>console.log("User wants to add this dish! ", details)} />
-                       , document.getElementById("app")));
-
-        const myModel=new DinnerModel(5);
-        Promise.all(
-            [DishSource.getDishDetails(523145), 
-            DishSource.getDishDetails(787321),
-            DishSource.getDishDetails(452179)]
-        ).then(values=> values.map(d=>myModel.addToMenu(d)))
-        .then(()=> { myModel.removeFromMenu({id:787321}); console.log(myModel); });
-        ReactDOM.render(<ReactTopLevelModel />, document.getElementById("app"));
-
-        ReactDOM.render(promiseNoData("promise", "some data", null), document.getElementById("app"));
-*/
-
-ReactDOM.render(<div><SearchTest /><DetailsTest/></div>, document.getElementById("app"))
                                                                       
 </script>
 
