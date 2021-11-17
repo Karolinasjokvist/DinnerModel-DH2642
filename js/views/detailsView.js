@@ -11,15 +11,15 @@ function DetailsView(props) {
                     <h1 class="titleView">{props.dish.title}</h1>
                     <p class="dishTypeView">{dishType(props.dish)}</p>
                     <div class="infoView">
-                        <table class="infoView">
+                        <table class="infoView1">
                             <tbody>
                                 <tr>
-                                    <td>{props.dish.vegetarian ? '☑' : '☒'} Vegetarian</td>
-                                    <td>{props.dish.vegan ? '☑' : '☒'} Vegan</td>
+                                    <td>{props.dish.vegetarian ? '✔️' : '❌'} Vegetarian</td>
+                                    <td>{props.dish.vegan ? '✔️' : '❌'} Vegan</td>
                                 </tr>
                                 <tr>
-                                    <td>{props.dish.glutenFree ? '☑' : '☒'} Gluten Free</td>
-                                    <td>{props.dish.dairyFree ? '☑' : '☒'} Dairy Free</td>
+                                    <td>{props.dish.glutenFree ? '✔️' : '❌'} Gluten Free</td>
+                                    <td>{props.dish.dairyFree ? '✔️' : '❌'} Dairy Free</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -27,8 +27,8 @@ function DetailsView(props) {
                         <p>Price per serving: {props.dish.pricePerServing} kr</p>
                         <p>Total price: {roundOff(props.dish.pricePerServing*props.people)} kr</p>
                         <p>Ready in {props.dish.readyInMinutes} min</p>
-                        <button class="buttonView" disabled={props.isDishInMenu != undefined} onClick={() => props.dishAdded(props.dish)}>Add to menu</button>
-                        <button class="buttonView">Cancel</button>
+                        <button class="buttonView" disabled={props.isDishInMenu != undefined} onClick={() => {props.dishAdded(props.dish); window.location.hash = "#search"}}>Add to menu</button>
+                        <button class="buttonView" onClick ={() => window.location.hash = "#search"}>Cancel</button>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ function divide(string) {
     for (var i = 0; i < a.length; i++) {
         for (var j = 48; j < 58; j++) {
             if (a[i] == String.fromCharCode(j) && a[i + 1] == String.fromCharCode(46)) {
-                a[i] = "/";
+                a[i] = "ღ";
                 a[i + 1] = String.fromCharCode(j);
                 a[i + 2] = ". ";
                 i += 2;
@@ -78,7 +78,7 @@ function divide(string) {
         }
     }
     string = a.join('');
-    return string.split('/');
+    return string.split('ღ');
 }
 
 function roundOff(amount) {

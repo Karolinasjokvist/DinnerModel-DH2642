@@ -8,9 +8,9 @@ function SidebarView(props) {
                 <tbody>
                     {[...props.dishes].sort(compareDishes).map(dish => 
                     <tr id = {dish.id}>
-                        <td><button onClick={() => props.removeDish(dish.id)}>x</button></td>
+                        <td><button onClick={() => props.removeDish(dish.id)}>❌</button></td>
                         <td><a href="" onClick={e=> {e.preventDefault(); 
-                            props.dishChoice(dish.id);} } 
+                            props.dishChoice(dish.id); window.location.hash="#details";} } 
                             >{dish.title}</a>
                         </td>
                         <td>{dishType(dish)}</td>
