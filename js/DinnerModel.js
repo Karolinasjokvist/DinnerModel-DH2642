@@ -10,7 +10,7 @@ class DinnerModel {
         if (x === this.numberOfGuests) {
             return;
         }
-        
+
         if (x <= 0 || typeof (x) !== "number") {
             throw "error";
         } else {
@@ -21,22 +21,22 @@ class DinnerModel {
     }
 
     addedToMenu(dish) {
-        if(this.dishes.some(d => d.id === dish)){
+        if (this.dishes.some(d => d.id === dish)) {
             return true;
         }
         return false;
     }
 
     addToMenu(dish) {
-        if (this.addedToMenu(dish)){
+        if (this.addedToMenu(dish)) {
             return;
-        } 
+        }
         this.dishes = [...this.dishes, dish];
         this.notifyObservers();
     }
 
     removeFromMenu(dishData) {
-        if(!this.addedToMenu(dishData)){
+        if (!this.addedToMenu(dishData)) {
             return;
         }
         console.log("hej")
@@ -48,7 +48,7 @@ class DinnerModel {
         if (this.currentDish === id) {
             return;
         }
-        
+
         this.currentDish = id;
         this.notifyObservers();
     }
@@ -66,6 +66,44 @@ class DinnerModel {
             try { cb() } catch (e) { console.log(e) }
         });
     }
+
+    setCurrentDish(id) {
+        if (this.currentDish === id) {
+            return;
+        }
+
+        this.currentDish = id;
+        this.notifyObservers();
+    }
+
+    setCurrentDish(id) {
+        if (this.currentDish === id) {
+            return;
+        }
+
+        this.currentDish = id;
+
+        this.currentDishDetails = null;
+        this.currentDishError = null;
+        this.notifyObservers();
+
+        if (this.currentDish) {
+            DishSource.getDishDetails(this.currentDish)
+                .then(data => {
+                    if(this.currentDish === id){
+                        this.currentDishDetails = data
+                        this.notifyObservers()
+                    }
+                })
+                .catch(error => {
+                    if(this.currentDish === id){
+                        this.currentDishError = error
+                        this.notifyObservers()
+                    }
+                });
+        }
+    }
+
 }
 
 function getIngredients(dishArr) {

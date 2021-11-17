@@ -25,8 +25,9 @@ function DetailsView(props) {
                         </table>
                         <p><br></br>People per serving: {props.dish.servings}</p>
                         <p>Price per serving: {props.dish.pricePerServing} kr</p>
+                        <p>Total price: {roundOff(props.dish.pricePerServing*props.people)} kr</p>
                         <p>Ready in {props.dish.readyInMinutes} min</p>
-                        <button class="buttonView" disabled={props.isDishInMenu == true} onClick={props.dishAdded}>Add to menu</button>
+                        <button class="buttonView" disabled={props.isDishInMenu != undefined} onClick={() => props.dishAdded(props.dish)}>Add to menu</button>
                         <button class="buttonView">Cancel</button>
                     </div>
                 </div>

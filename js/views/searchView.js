@@ -3,7 +3,7 @@ function eventPrinter(evt) { console.log(evt); }
 function SearchFormView(props) {
     return (
         <div>
-            <button onClick={event => props.onSearch()} >Search</button>
+            <button onClick={() => props.onSearch()} >Search</button>
             <input onChange={e => props.onText(e.target.value)} />
 
             <select onChange={e => props.onDishType(e.target.value)}>

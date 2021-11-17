@@ -8,9 +8,12 @@
     <script src="js/views/SummaryView.js" type="text/jsx"></script>
     <script src="js/views/sideBarView.js" type="text/jsx"></script>
     <script src="js/views/searchView.js" type="text/jsx"></script>
+    <script src="js/views/detailsView.js" type="text/jsx"></script>
     <script src="js/app.js" type="text/jsx"></script>
     <script src="js/DinnerModel.js" type="text/jsx"></script>
     <script src="vuejs/sidebarPresenter.js" type="text/jsx"></script>
+    <script src="vuejs/detailsPresenter.js" type="text/jsx"></script>
+    <script src="vuejs/searchPresenter.js" type="text/jsx"></script>
     <script src="vuejs/summaryPresenter.js" type="text/jsx"></script>
     <script src="js/views/promiseNoData.js" type="text/jsx"></script>
     <link rel="stylesheet" href="style.css">
@@ -38,7 +41,7 @@
             return <App model={this.model}/>;
         }
     }
-
+/*
     Promise.all(
         [DishSource.getDishDetails(523145), 
         DishSource.getDishDetails(787321),
@@ -47,8 +50,11 @@
         values.map(d=>myModel.addToMenu(d));
         Vue.render(<TopLevelModel />, document.getElementById("app"));
         });
+*/
+Vue.render(<TopLevelModel />, document.getElementById("app"));
+    
 
-    Vue.render(promiseNoData("promise", "some data", null), document.getElementById("app"));
+
 </script>
 
 </html>
