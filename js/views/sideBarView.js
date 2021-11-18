@@ -1,14 +1,14 @@
 function SidebarView(props) {
     return (console.log(props),  // a lonely return on a line returns undefined. Parentheses needed
         <div>
-            <button disabled={props.guests <= 1} onClick={event => props.setGuests(props.guests - 1)}>-</button>
+            <button disabled={props.guests <= 1} onClick={event => props.setGuests(props.guests - 1)} class="deleteButtonView">-</button>
             {' '}<span title="guests">{props.guests}</span>{' '}
-            <button onClick={event => props.setGuests(props.guests + 1)} >+</button>
+            <button onClick={event => props.setGuests(props.guests + 1)} class="deleteButtonView">+</button>
             <table>
                 <tbody>
                     {[...props.dishes].sort(compareDishes).map(dish => 
                     <tr id = {dish.id}>
-                        <td><button onClick={() => props.removeDish(dish.id)}>❌</button></td>
+                        <td><button onClick={() => props.removeDish(dish.id)} class="deleteButtonView">❌</button></td>
                         <td><a href="" onClick={e=> {e.preventDefault(); 
                             props.dishChoice(dish.id); window.location.hash="#details";} } 
                             >{dish.title}</a>

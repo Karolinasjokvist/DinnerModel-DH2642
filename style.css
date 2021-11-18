@@ -1,11 +1,27 @@
+/* Search results and dish images */
+
 .searchResult {
-  padding-top: 3%;
-  padding-bottom: 7%;
+  padding-top: 30px;
+  padding-bottom: 90px;
+  padding-left: 50px;
   text-align: center;
   display:inline-block; 
   height:150px;
   width: 200px;
   vertical-align:middle;
+  cursor: pointer;
+}
+
+.searchResult:hover{
+  padding-top: 30px;
+  padding-bottom: 90px;
+  padding-right: 40px;
+  height:120px;
+  width: 160px;
+  text-align: center;
+  display: inline-block; 
+  vertical-align: middle;
+  cursor: pointer;
 }
 
 .dishImgView{
@@ -15,19 +31,6 @@
   width: 180px; 
   height: 180px; 
   object-fit: cover;
-}
-
-.summaryButton{
-  margin-left: 164px;
-  background-color: #b4dafd;
-  border: 0px;
-  border-radius: 5px;
-  transition-duration: 0.1s;
-}
-
-.summaryButton:hover {
-  background-color: #4CAF50;
-  color: white;
 }
 
 .search {
@@ -49,6 +52,8 @@
   outline: none;
 }
 
+/*all of the buttons are here*/
+
 .searchButton {
   width: 40px;
   height: 36px;
@@ -61,20 +66,51 @@
   font-size: 20px;
 }
 
-.options{
+.searchButton:hover{
+  background-color: #89b3d8;
+}
+
+.deleteButtonView{
+  cursor: pointer;
+}
+
+.buttonView{
+  background-color: #b4dafd;
+  border: 0px;
+  padding: 20px;
+  margin-left: 55;
+  margin-top: 20;
+  transition-duration: 0.1s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttonView:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.summaryButton{
+  margin-left: 164px;
+  background-color: #b4dafd;
+  border: 0px;
+  border-radius: 5px;
+  transition-duration: 0.1s;
+  cursor: pointer;
+}
+
+.summaryButton:hover {
+  background-color: #89b3d8;
+}
+
+.optionsMenu{
   height: 36px;
   margin-left: 20px;
   border: 3px solid #b4dafd;
   outline: none;
 }
 
-.showTotalPrice{
-
-}
-
-.totalPrice{
-  
-}
+/* other things */
 
 .detailsView {
   padding: 0px;
@@ -90,8 +126,8 @@
   padding: 20px;
   border-radius: 0px;
   border: 20px solid #b4dafd;
-  width: 500px;
-  height: 400px;
+  width: 300px;
+  height: 250px;
 }
 
 .titleView{
@@ -136,20 +172,6 @@
   padding-top: 30px;
   margin-left: 200px;
   margin-bottom: 50px;
-}
-
-.buttonView{
-  background-color: #b4dafd;
-  border: 0px;
-  padding: 20px;
-  margin-left: 55;
-  margin-top: 20;
-  transition-duration: 0.1s;
-}
-
-.buttonView:hover {
-  background-color: #4CAF50;
-  color: white;
 }
 
 .recipeView{

@@ -4,7 +4,7 @@ function SearchFormView(props) {
     return (
         <div class = "search">
 
-            <select class = "options" onChange={e => props.onDishType(e.target.value)}>
+            <select class = "optionsMenu" onChange={e => props.onDishType(e.target.value)}>
                 <option>Choose:</option>
                 {props.options.map(
                     function (opt) { return <option >{opt}</option> })}
