@@ -17,7 +17,10 @@
     <script src="vuejs/searchPresenter.js" type="text/jsx"></script>
     <script src="vuejs/summaryPresenter.js" type="text/jsx"></script>
     <script src="js/views/promiseNoData.js" type="text/jsx"></script>
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+    <script src="js/firebaseConfig.js"></script>
+    <script src="js/firebaseModel.js"></script>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -32,28 +35,20 @@
 </body>
 
 <script type="text/jsx">
-    const myModel = new DinnerModel(3);
+    const myModel = new DinnerModel();
+    persistModel(myModel);
     const TopLevelModel = {
         data() {
             return  {
                 model: myModel
             };
         }, 
+        created(){ persistModel(this.model); },
         render(){ 
             return <App model={this.model}/>;
         }
     }
-/*
-    Promise.all(
-        [DishSource.getDishDetails(523145), 
-        DishSource.getDishDetails(787321),
-        DishSource.getDishDetails(452179)]
-    ).then(function(values){ 
-        values.map(d=>myModel.addToMenu(d));
-        Vue.render(<TopLevelModel />, document.getElementById("app"));
-        });
-*/
-Vue.render(<TopLevelModel />, document.getElementById("app"));
+    firebase.database().ref("dinnerModel").once("value").then(()=>Vue.render(<TopLevelModel />, document.getElementById("app")));
     
 
 

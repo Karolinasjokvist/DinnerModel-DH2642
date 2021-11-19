@@ -103,6 +103,12 @@ class DinnerModel {
                 });
         }
     }
+    
+    setDishes(dishes){ 
+        this.dishes= [...dishes]; 
+        this.notifyObservers();
+    }
+    
 
 }
 

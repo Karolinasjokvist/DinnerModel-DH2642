@@ -25,41 +25,44 @@ function DetailsView(props) {
                         </table>
                         <p><br></br>People per serving: {props.dish.servings}</p>
                         <p>Price per serving: {props.dish.pricePerServing} kr</p>
-                        <p>Total price: {roundOff(props.dish.pricePerServing*props.people)} kr</p>
+                        <p>Total price: {roundOff(props.dish.pricePerServing * props.people)} kr</p>
                         <p>Ready in {props.dish.readyInMinutes} min</p>
-                        <button class="buttonView" disabled={props.isDishInMenu != undefined} onClick={() => {props.dishAdded(props.dish); window.location.hash = "#search"}}>Add to menu</button>
-                        <button class="buttonView" onClick ={() => window.location.hash = "#search"}>Cancel</button>
+                        <button class="buttonView" disabled={props.isDishInMenu != undefined} onClick={() => { props.dishAdded(props.dish); window.location.hash = "#search" }}>Add to menu</button>
+                        <button class="buttonView" onClick={() => window.location.hash = "#search"}>Cancel</button>
                     </div>
                 </div>
             </div>
 
-            <div class = "recipeView">
-                <div class="ingredientView">
-                    <table>
-                        <thead>
-                            <th>Ingredients:</th>
-                        </thead>
-                        <tbody>
-                            {[...props.dish.extendedIngredients].map(dish =>
-                                <tr>
-                                    <td>{roundOff(dish.amount)}{" "}{dish.unit}</td>
-                                    <td>{" "}</td>
-                                    <td>{" "}</td>
-                                    <td>{" "}</td>
-                                    <td>{dish.nameClean}</td>
-                                </tr>
-                            )}
-                        </tbody>
-                    </table>
-                </div>
+            <div class="recipeView">
 
-                <div class="instructionsView">
-                    <h4>Instructions:</h4>
-                    {divide(props.dish.instructions).map(dish =>
-                        <p>{dish}</p>
-                    )}
-                </div>
+                <table class="ingredientView">
+                    <thead>
+                        <th>Ingredients:</th>
+                    </thead>
+                    <tbody>
+                        {[...props.dish.extendedIngredients].map(dish =>
+                            <tr>
+                                <td>{roundOff(dish.amount)}{" "}{dish.unit}</td>
+                                <td>{dish.nameClean}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+
+                <table class="instructionsView">
+                    <thead>
+                        <th>Instructions:</th>
+                    </thead>
+                    <tbody>
+                        {divide(props.dish.instructions).map(dish =>
+                            <tr>
+                                <td>{dish}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
             </div>
+
         </div>
     );
 }
