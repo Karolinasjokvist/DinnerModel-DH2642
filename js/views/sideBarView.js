@@ -1,6 +1,6 @@
 function SidebarView(props) {
     return (console.log(props),  // a lonely return on a line returns undefined. Parentheses needed
-        <div>
+        <div class = "sideBarView">
             <button disabled={props.guests <= 1} onClick={event => props.setGuests(props.guests - 1)} class="deleteButtonView">-</button>
             {' '}<span title="guests">{props.guests}</span>{' '}
             <button onClick={event => props.setGuests(props.guests + 1)} class="deleteButtonView">+</button>
@@ -24,9 +24,9 @@ function SidebarView(props) {
                         <td class="totalPrice">{(props.dishes.reduce((accumulator, value) => 
                         accumulator + value.pricePerServing * props.guests, 0)).toFixed(2)}</td>
                     </tr>
-
                 </tbody>
             </table>
+            <button onClick={() => window.location.hash = "#summary" }class = "summaryButton" >Summary of ingredients</button>
         </div>
     );
 }

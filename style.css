@@ -1,9 +1,10 @@
 /* Search results and dish images */
 
 .searchResult {
-  padding-top: 30px;
-  padding-bottom: 90px;
-  padding-left: 50px;
+  font-family: "Courier New", Times, sans-serif;
+  padding-top: 50px;
+  padding-bottom: 120px;
+  padding-left: 70px;
   text-align: center;
   display:inline-block; 
   height:150px;
@@ -12,24 +13,17 @@
   cursor: pointer;
 }
 
-.searchResult:hover{
-  padding-top: 30px;
-  padding-bottom: 90px;
-  padding-right: 40px;
-  height:120px;
-  width: 160px;
-  text-align: center;
-  display: inline-block; 
-  vertical-align: middle;
-  cursor: pointer;
+.searchResult img:hover{
+  padding-top: 10px;
+
 }
 
 .dishImgView{
   padding-bottom: 5%;
   text-align: center;
-  vertical-align:middle;
-  width: 180px; 
-  height: 180px; 
+  
+  width: 230px; 
+  height: 230px; 
   object-fit: cover;
 }
 
@@ -91,7 +85,8 @@
 }
 
 .summaryButton{
-  margin-left: 164px;
+  padding: 20px;
+  margin-left: 20%;
   background-color: #b4dafd;
   border: 0px;
   border-radius: 5px;
@@ -138,7 +133,6 @@
 }
 
 .ingredientView{
-  table-layout: fixed;
   padding-top: 50px;
   margin-left: 50px;
   font-family: "Courier New", Times, sans-serif;
@@ -149,10 +143,6 @@
 
 .ingredientView tr:nth-child(odd){
   background: #b4dafd
-}
-
-.ingredientView th{
-  padding-right: 400px;
 }
 
 .infoView{
@@ -194,6 +184,7 @@
   display:flex;
   align-items:normal;
   vertical-align: top;
+  justify-content: left;
 }
 
 .tableView{
@@ -251,4 +242,8 @@
 .loadingSymbol{
   padding-left: 45%;
   padding-top: 25%;
+}
+
+.sideBarView{
+  font-family: "Courier New", Times, sans-serif;
 }

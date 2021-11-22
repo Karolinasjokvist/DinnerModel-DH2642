@@ -12,7 +12,6 @@ function SearchFormView(props) {
 
             <input onChange={e => props.onText(e.target.value)} class = "searchBar" />
             <button onClick={() => props.onSearch()}class="searchButton" >🔍</button>
-            <button onClick={() => window.location.hash = "#summary" }class = "summaryButton" >Summary</button>
 
         </div>
 
