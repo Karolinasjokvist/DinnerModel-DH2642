@@ -193,6 +193,7 @@
 .recipeView{
   display:flex;
   align-items:normal;
+  vertical-align: top;
 }
 
 .tableView{
