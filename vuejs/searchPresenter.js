@@ -7,6 +7,7 @@ const SearchPresenter = {
             error: null,
             search: "",
             dishType: "",
+            moreResults: false
         };
     },
 
@@ -16,6 +17,7 @@ const SearchPresenter = {
         this.promise = DishSource.searchDishes({})
             .then((data) => (this.data = data))
             .catch((error) => (this.error = error));
+
     },
 
     render() {
@@ -37,6 +39,7 @@ const SearchPresenter = {
                     onDishType={(dishType) => (this.dishType = dishType)}
                 />
                 {promiseNoData(this.promise, this.data, this.error) || (
+                    console.log(this.data),
                     <SearchResultsView
                         searchResults={this.data}
                         dishChosen={(id) => this.model.setCurrentDish(id)}
@@ -46,3 +49,5 @@ const SearchPresenter = {
         );
     },
 };
+
+

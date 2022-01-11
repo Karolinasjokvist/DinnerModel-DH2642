@@ -10,7 +10,7 @@ function SearchFormView(props) {
                     function (opt) { return <option >{opt}</option> })}
             </select>
 
-            <input onChange={e => props.onText(e.target.value)} class = "searchBar" />
+            <input id="search" onChange={e => debounce(props.onSearch(e.target.value),1000)} class = "searchBar" />
             <button onClick={() => props.onSearch()}class="searchButton" >🔍</button>
 
         </div>
@@ -30,3 +30,17 @@ function SearchResultsView(props) {
         </div>
     )
 }
+
+
+
+var search = document.getElementById("search");
+const debounce = (func, delay) => {
+    let debounceTimer
+    return function() {
+        const context = this
+        const args = arguments
+            clearTimeout(debounceTimer)
+                debounceTimer
+            = setTimeout(() => func.apply(context, args), delay)
+    }
+} 

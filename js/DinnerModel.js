@@ -4,6 +4,7 @@ class DinnerModel {
         this.setNumberOfGuests(guests);
         this.dishes = dishes;
         this.currentDish = currentDish;
+        this.moreResults = false;
     }
 
     setNumberOfGuests(x) {
@@ -39,7 +40,6 @@ class DinnerModel {
         if (!this.addedToMenu(dishData)) {
             return;
         }
-        console.log("hej")
         this.dishes = this.dishes.filter((dish) => dish.id !== dishData);
         this.notifyObservers();
     }
@@ -67,6 +67,19 @@ class DinnerModel {
         });
     }
 
+    loadMoreResults() {
+        if(!this.moreResults){
+            this.moreResults = true;
+            console.log(this.moreResults);
+            this.notifyObservers();
+        }
+        this.moreResults = false;
+        console.log(this.moreResults);
+
+        this.notifyObservers();
+    }
+
+
     setCurrentDish(id) {
         if (this.currentDish === id) {
             return;
@@ -90,25 +103,25 @@ class DinnerModel {
         if (this.currentDish) {
             DishSource.getDishDetails(this.currentDish)
                 .then(data => {
-                    if(this.currentDish === id){
+                    if (this.currentDish === id) {
                         this.currentDishDetails = data
                         this.notifyObservers()
                     }
                 })
                 .catch(error => {
-                    if(this.currentDish === id){
+                    if (this.currentDish === id) {
                         this.currentDishError = error
                         this.notifyObservers()
                     }
                 });
         }
     }
-    
-    setDishes(dishes){ 
-        this.dishes= [...dishes]; 
+
+    setDishes(dishes) {
+        this.dishes = [...dishes];
         this.notifyObservers();
     }
-    
+
 
 }
 

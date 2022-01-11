@@ -1,5 +1,5 @@
 function DetailsView(props) {
-    return (console.log(props),
+    return (
         <div class="detailsView">
 
             <div class="alignView">
