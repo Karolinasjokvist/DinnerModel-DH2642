@@ -35,6 +35,7 @@ function SearchPresenter(props) {
                 options={["starter", "main course", "dessert"]}
                 // onText={(search) => (setSearch(search))}
                 onSearch={(search) => {
+                    render = 12;
                     setSearch(search);
                     setData(null);
                     setError(null);
@@ -45,7 +46,6 @@ function SearchPresenter(props) {
                     })
                     .then((data) => setData(data))
                     .catch((error) => setError(error)));
-                    render = 12;
                 }}
                 onDishType={(dishType) => (setDishType(dishType))}
             />
