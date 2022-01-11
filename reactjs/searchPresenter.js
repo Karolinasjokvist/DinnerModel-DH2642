@@ -1,5 +1,6 @@
 let render = 12;
 console.log(render)
+let stop = false;
 function SearchPresenter(props) {
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
@@ -7,6 +8,7 @@ function SearchPresenter(props) {
     const [search, setSearch] = React.useState(null);
     const [dishType, setDishType] = React.useState("");
     const [moreResults, setMoreResults] = React.useState(null);
+    const [hashState, setHashState] = React.useState(window.location.hash);
 
     React.useEffect(() => {
         setPromise(DishSource.searchDishes({ number: render })
@@ -16,10 +18,16 @@ function SearchPresenter(props) {
             setMoreResults(props.model.moreResults)
         }
         props.model.addObserver(obs);
-        return () => props.model.removeObserver(obs);
+
+        const listener = function () { setHashState(window.location.hash); }
+        window.addEventListener("hashchange", listener); //Subscribe
+
+        return function () { window.removeEventListener("hashchange", listener), props.model.removeObserver(obs) }
+
     }, []);
 
     function infiniteScroll(search) {
+        console.log("infinite")
         render += 4;
         let params = search != null ? { number: render, query: search, type: dishType } : { number: render };
         setPromise(DishSource.searchDishes(params)
@@ -28,9 +36,10 @@ function SearchPresenter(props) {
         setMoreResults(false);
     }
 
+
     return (
         <div>
-            {!moreResults || infiniteScroll(search)}
+            {!moreResults || hashState !== "#search" || infiniteScroll(search)}
             <SearchFormView
                 options={["starter", "main course", "dessert"]}
                 // onText={(search) => (setSearch(search))}
@@ -44,8 +53,8 @@ function SearchPresenter(props) {
                         query: search,
                         type: dishType,
                     })
-                    .then((data) => setData(data))
-                    .catch((error) => setError(error)));
+                        .then((data) => setData(data))
+                        .catch((error) => setError(error)));
                 }}
                 onDishType={(dishType) => (setDishType(dishType))}
             />
